@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
-import Home from './components/Home';
-import AdminLogin from './components/AdminLogin';
-import Dashboard from './components/Dashboard'; // Placeholder for after login
+import Home from '../src/Components/AdminLogin';
+import AdminLogin from '../src/Components/Dashboard';
+import Dashboard from '../src/Components/home'; // Placeholder for after login
 
 function App() {
   const [userRole, setUserRole] = useState(null); // Track logged-in user role
