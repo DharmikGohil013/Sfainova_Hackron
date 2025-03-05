@@ -1,3 +1,4 @@
+// app/Header/Header.jsx
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
@@ -28,8 +29,13 @@ const Header = () => {
   };
 
   return (
-    <header className={`header ${isHeaderActive ? "active" : ""}`} data-header>
-      <div className="container shadow-md">
+    <header
+      className={`fixed top-0 left-0 w-full z-50 header ${
+        isHeaderActive ? "active" : ""
+      }`}
+      data-header
+    >
+      <div className="container shadow-md py-4">
         {/* Logo */}
         <Link href="/">
           <Image
