@@ -9,7 +9,7 @@ const Rules = (props: Props) => {
     <div className="flex flex-col section  container">
       <div className="w-full mx-auto text-2xl px-4">
         <h2 className="text-3xl text-emerald-600 font-bold mb-4">
-          Latest Indian E-Waste Management Rules
+          Latest Indian Ai-Base Management Rules
         </h2>
         <p className="mb-2"></p>
         <p className="mb-2">
@@ -25,7 +25,7 @@ const Rules = (props: Props) => {
           <strong>S.O. 1047(E)</strong>
         </p>
         <p className="mb-2">
-          <strong>Subject: The E-Waste (Management) Rules, 2022</strong>
+          <strong>Subject: The Ai-Base (Management) Rules, 2022</strong>
         </p>
         <p className="mb-4">
           In exercise of the powers conferred by section 6, 8 and 25 of the
@@ -42,7 +42,7 @@ const Rules = (props: Props) => {
           <strong>1. Short title and commencement.</strong>
         </p>
         <p className="mb-2">
-          (1) These rules may be called the E-Waste (Management) Rules, 2022.
+          (1) These rules may be called the Ai-Base (Management) Rules, 2022.
         </p>
         <p className="mb-2">
           (2) They shall come into force on the date of their publication in the
@@ -72,7 +72,7 @@ const Rules = (props: Props) => {
             <strong>
               (c) "Authorized dismantler" means a person or entity authorized by
               the State Pollution Control Board to dismantle or disassemble
-              e-waste;
+              Ai-Base;
             </strong>
           </li>
         </ul>
@@ -87,11 +87,11 @@ const Rules = (props: Props) => {
         </p>
         <p>
           (1) Every producer shall be responsible for establishing a system to
-          collect, refurbish, recycle or dispose of e-waste generated from his
+          collect, refurbish, recycle or dispose of Ai-Base generated from his
           products in an environmentally sound
         </p>
         <p className="mb-2">
-          <strong>4. Collection of E-Waste from Consumers.</strong>
+          <strong>4. Collection of Ai-Base from Consumers.</strong>
         </p>
         <p>
           (1) Producers shall set up collection centers for the return of
@@ -130,7 +130,7 @@ const Rules = (props: Props) => {
         </p>
         <p>
           (1) Producers shall submit an annual report to the State Pollution
-          Control Board regarding the collection and recycling of e-waste.
+          Control Board regarding the collection and recycling of Ai-Base.
         </p>
         <p>
           (2) The format and details of the annual report shall be specified by
@@ -138,11 +138,11 @@ const Rules = (props: Props) => {
         </p>
 
         <p className="mb-2">
-          <strong>8. Transportation and Handling of E-Waste.</strong>
+          <strong>8. Transportation and Handling of Ai-Base.</strong>
         </p>
         <p>
           (1) Producers and authorized dismantlers shall ensure safe and
-          environmentally sound transportation and handling of e-waste.
+          environmentally sound transportation and handling of Ai-Base.
         </p>
         <p>
           (2) The vehicles used for transportation shall comply with the
@@ -155,11 +155,11 @@ const Rules = (props: Props) => {
         <p>
           (1) Producers shall organize and participate in awareness programs to
           educate consumers and the general public about the proper disposal of
-          e-waste.
+          Ai-Base.
         </p>
         <p>
           (2) The programs shall highlight the environmental impact of improper
-          e-waste disposal and promote responsible recycling practices.
+          Ai-Base disposal and promote responsible recycling practices.
         </p>
 
         <p className="mb-2">
@@ -167,7 +167,7 @@ const Rules = (props: Props) => {
         </p>
         <p>
           (1) Unauthorized handling, including dismantling and recycling of
-          e-waste, is strictly prohibited.
+          Ai-Base, is strictly prohibited.
         </p>
         <p>
           (2) Violation of this rule may lead to legal consequences, including
@@ -181,7 +181,7 @@ const Rules = (props: Props) => {
         </p>
         <p>
           (1) Producers shall collaborate with authorized treatment and disposal
-          facilities for the environmentally safe processing of e-waste.
+          facilities for the environmentally safe processing of Ai-Base.
         </p>
         <p>
           (2) The facilities must comply with the standards set by regulatory
@@ -234,7 +234,7 @@ const Rules = (props: Props) => {
         </div>
         <div className="flex flex-col w-full my-4 projects shadow-lg bg-gray-400 border border-gray-500 overflow-y-auto p-8">
         <h2 className="text-2xl md:text-3xl font-bold mb-4 py-4 shadow-sm text-center text-emerald-600">
-        E-waste Annual Report for Maharashtra
+        Ai-Base Annual Report for Maharashtra
           </h2>
           {report.map((notification, index) => (
             <div key={index} className="mb-4 shadow-sm">

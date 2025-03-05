@@ -12,8 +12,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "ELocate",
-  description: "ELocate - One stop solution to Recycle E-Waste, E-waste Facility Locator",
+  title: "Safainova",
+  description: "ELocate - One stop solution to Recycle Ai-Base, Ai-Base Facility Locator",
 };
 
 

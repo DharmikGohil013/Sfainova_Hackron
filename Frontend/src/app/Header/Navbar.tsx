@@ -6,7 +6,7 @@ import { IonIcon } from "@ionic/react";
 import { menuOutline } from "ionicons/icons";
 import { closeOutline } from "ionicons/icons";
 import { location } from "ionicons/icons"
-import logo from "../../assets/ELocate-s.png"
+import logo from "../../assets/bugb.png"
 import { getEmail, getUser, getUserName, handleLogout, isAuthenticated } from "../sign-in/auth";
 import { FiUser } from 'react-icons/fi';
 import getLocation from "../utils/getLocation";

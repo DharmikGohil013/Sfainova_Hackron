@@ -19,7 +19,7 @@ const solutionVariants = {
 };
 
 
-const HeroSection: React.FC = () => {
+const   HeroSection: React.FC = () => {
   const [currentSolution, setCurrentSolution] = useState(solutions[0]);
 
   useEffect(() => {

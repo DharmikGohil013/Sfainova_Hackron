@@ -9,7 +9,7 @@ import { logoLinkedin } from "ionicons/icons";
 import { logoTwitter } from "ionicons/icons";
 import { logoInstagram } from "ionicons/icons";
 import { logoWhatsapp } from "ionicons/icons";
-import logo from "../../assets/ELocate-s.png";
+import logo from "../../assets/Bugbb2.png";
 import Link from "next/link";
 import Image from "next/image";
 import emailjs from "@emailjs/browser";
@@ -81,9 +81,9 @@ const Footer = () => {
                 className="logo mx-auto md:mx-0"
               />
             </Link>
-            <p className="footer-text">
-            ELocate: Transforming E-Waste Management. Find E-waste facilities effortlessly with our platform. Your key to responsible recycling and sustainability.
-            </p>
+            {/* <p className="footer-text">
+            ELocate: Transforming Ai-Base Management. Find Ai-Base facilities effortlessly with our platform. Your key to responsible recycling and sustainability.
+            </p> */}
             <form onSubmit={SendMsg} className="newsletter-form mb-0 md:mb-4">
               <input
                 type="email"
@@ -103,46 +103,7 @@ const Footer = () => {
               </button>
             </form>
           </div>
-          <ul className="footer-list">
-            <li>
-              <p className="footer-list-title">Our Services</p>
-            </li>
-            <li>
-              <Link href="/recycle/smartphone" className="footer-link">
-                Smartphone Recycle
-              </Link>
-            </li>
-            <li>
-              <Link href="/recycle/laptop" className="footer-link">
-                Laptop Recycle
-              </Link>
-            </li>
-            <li>
-              <Link href="/recycle/accessories" className="footer-link">
-              Accessories Recycle
-              </Link>
-            </li>
-
-            <li>
-              <Link href="/recycle/tv" className="footer-link">
-                Television Recycle
-              </Link>
-            </li>
-
-            <li>
-              <Link href="/recycle/refrigerator" className="footer-link">
-              Refrigerator Recycle
-              </Link>
-            </li>
-
-            <li>
-            <Link href="/recycle/washing-machine" className="footer-link">
-                Washing Machine Recycle
-              </Link>
-            </li>
-
           
-          </ul>
           <ul className="footer-list">
             <li>
               <p className="footer-list-title">Company</p>
@@ -161,7 +122,7 @@ const Footer = () => {
 
             <li>
               <Link href="/facilities" className="footer-link">
-                E-waste Facilities
+                Ai-Base Facilities
               </Link>
             </li>
 
@@ -182,87 +143,7 @@ const Footer = () => {
               </Link>
             </li>
           </ul>
-          <ul className="footer-list">
-            <li>
-              <p className="footer-list-title">Contact Us</p>
-            </li>
-            <li className="footer-item">
-              <IonIcon icon={location} aria-hidden="true" className="w-8 h-8 mt-4"></IonIcon>
-              <address className="contact-link address">
-                Chh.Sambhajinagar,<br />Maharashtra,  431001
-              </address>
-            </li>
-            <li className="footer-item">
-              <IonIcon icon={call} aria-hidden="true"></IonIcon>
-              <Link
-                target="_blank"
-                rel="noopener noreferrer"
-                href="tel:+911234567890"
-                className="contact-link"
-              >
-                +911234567890
-              </Link>
-            </li>
-            <li className="footer-item">
-              <IonIcon icon={mail} aria-hidden="true"></IonIcon>
-              <Link
-                target="_blank"
-                rel="noopener noreferrer"
-                href="mailto:contact@elocate.com"
-                className="contact-link"
-              >
-                contact@elocate.com{" "}
-              </Link>
-            </li>
-            <li className="footer-item">
-              <ul className="social-list mb-4 md:mb-0">
-                <li>
-                  <Link
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="#"
-                    aria-label="linkedin"
-                    className="social-link"
-                  >
-                    <IonIcon icon={logoLinkedin}></IonIcon>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="#"
-                    aria-label="Instagram"
-                    className="social-link"
-                  >
-                    <IonIcon icon={logoInstagram}></IonIcon>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="#"
-                    aria-label="Twitter"
-                    className="social-link"
-                  >
-                    <IonIcon icon={logoTwitter}></IonIcon>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="#"
-                    aria-label="Whatsapp"
-                    className="social-link"
-                  >
-                    <IonIcon icon={logoWhatsapp}></IonIcon>
-                  </Link>
-                </li>
-              </ul>
-            </li>
-          </ul>
+          
         </div>
       </div>
       <div className="footer-bottom">
