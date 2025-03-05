@@ -1,149 +1,126 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+"use client";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
-import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import { setEmail, setPhoneNumber, setToken, setUser, setUserID, setUserName, setfullname } from "./auth";
+import { FiUser, FiLock } from "react-icons/fi";
 
-const Signin: React.FC = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+const SignInPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
-  const [showPassword, setShowPassword] = useState(false);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const login = async () => {
-    toast.loading("Loading..")
     try {
-      const response = await axios.post(
-        "https://elocate-server.onrender.com/api/v1/auth/login",
-        formData
-      );
-      const  user  = response.data;
-      console.log(user);
-  
-      localStorage.setItem("user", JSON.stringify(user));
-  
-      toast.success("Login Successful!");
-  
-      if (user) {
-        setUser(user);
-        setEmail(user.email);
-        setToken(user.token)
-        setPhoneNumber(user.phoneNumber);
-        setfullname(user.fullname);
-        setUserID(user.id);
-        if (user.username) {
-          setUserName(user.username);
-        }
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      // Check for network errors
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || `HTTP error! Status: ${response.status}`);
       }
-  
-      window.location.href = "/";
-    } catch (error) {
-      console.error("Login failed:", error);
-      toast.error("Login Failed. Please check your credentials.");
+
+      const data = await response.json();
+      localStorage.setItem("accessToken", data.token);
+      router.push("/");
+
+    } catch (err) {
+      // Detailed error logging
+      console.error("Login Error:", err);
+      
+      // Handle different error types
+      if (err.name === "AbortError") {
+        setError("Request was aborted");
+      } else if (err.message.includes("fetch")) {
+        setError("Network error - Check your connection");
+      } else {
+        setError(err.message || "Authentication failed");
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
-
-
-
   return (
-    <div className="flex items-center justify-center md:h-screen h-[70vh]">
-      <ToastContainer
-        className="text-2xl"
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
-      <div className="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0">
-        <div className="flex flex-col justify-center p-8 md:p-14">
-          <span className="mb-3 text-4xl font-bold">Welcome back</span>
-          <span className="font-light text-gray-400 mb-8">
-            Welcome back! Please enter your details
-          </span>
-          <form className="py-4">
-            <span className="mb-2 text-md">Email</span>
-            <input
-              type="text"
-              className="w-full p-2 sign-field rounded-md placeholder:font-light placeholder:text-gray-500"
-              name="email"
-              id="email"
-              placeholder="email"
-              onChange={handleInputChange}
-              value={formData.email}
-            />
-          </form>
-          <div className="py-4">
-            <span className="mb-2 text-md">Password</span>
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              id="password"
-              placeholder="password"
-              className="w-full p-2 sign-field rounded-md placeholder:font-light placeholder:text-gray-500"
-              onChange={handleInputChange}
-              value={formData.password}
-            />
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <h2 className="text-2xl font-bold mb-6 text-center text-emerald-600">
+          Sign In
+        </h2>
+
+        {error && (
+          <div className="bg-red-100 text-red-600 p-3 rounded mb-4">
+            {error}
           </div>
-          <div className="flex justify-between w-full py-4">
-            <label className="flex items-center text-sm mr-24">
-              <input
-                type="checkbox"
-                name="ch"
-                id="ch"
-                placeholder="checkbox"
-                className="mr-2 p-1"
-                onClick={togglePasswordVisibility}
-              />
-              Show Password
+        )}
+
+        <form onSubmit={handleSubmit}>
+          {/* Email Input */}
+          <div className="mb-4">
+            <label className="block text-gray-700 mb-2" htmlFor="email">
+              Email
             </label>
-            <Link href="/forget-password" className="font-bold text-black">
-              forgot password ?
-            </Link>
+            <div className="relative">
+              <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="pl-10 pr-3 py-2 border rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                required
+              />
+            </div>
           </div>
 
+          {/* Password Input */}
+          <div className="mb-4">
+            <label className="block text-gray-700 mb-2" htmlFor="password">
+              Password
+            </label>
+            <div className="relative">
+              <FiLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="pl-10 pr-3 py-2 border rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                required
+              />
+            </div>
+          </div>
+
+          {/* Submit Button */}
           <button
-            className="w-full bg-black mt-4 text-white p-2 rounded-lg mb-6 hover:bg-emerald-400 hover:text-black hover:border hover:border-gray-300"
-            onClick={login}
+            type="submit"
+            disabled={loading}
+            className="bg-emerald-600 text-white py-2 px-4 rounded-lg w-full hover:bg-emerald-700 transition duration-200"
           >
-            Sign in
+            {loading ? "Signing In..." : "Sign In"}
           </button>
 
-          <div className="text-center text-gray-400">
-            Dont have an account?
-            <Link
-              href="/sign-up"
-              className="font-bold text-black hover:text-emerald-300"
-            >
-              Sign up{" "}
+          {/* Forgot Password Link */}
+          <div className="mt-4 text-center">  
+            <Link href="/forgot-password" className="text-emerald-600 hover:underline">
+              Forgot Password?
             </Link>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
 };
 
-export default Signin;
+export default SignInPage;  

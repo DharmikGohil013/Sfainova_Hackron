@@ -40,7 +40,7 @@ const SignUp: React.FC = () => {
 
     try {
       const response = await axios.post(
-        "https://elocate-server.onrender.com/api/v1/auth/register",
+        "http://localhost:5000/api/auth/register",
         formData
       );
 

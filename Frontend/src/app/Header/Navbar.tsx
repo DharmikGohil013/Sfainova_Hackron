@@ -109,7 +109,7 @@ const Header = () => {
         <nav className={`navbar ${isNavbarActive ? "active" : ""}`} data-navbar>
           <div className="wrapper">
             <Link href="/" className="logo">
-              ELocate
+              
             </Link>
             <button
               className="nav-close-btn"
