@@ -153,7 +153,7 @@ function App() {
               <div className="text-center mb-8">
                 <div className="flex items-center justify-center gap-3 mb-4">
                   <RecycleIcon className="w-12 h-12 text-emerald-500" />
-                  <h1 className="text-3xl font-bold">WasteWatch</h1>
+                  <h1 className="text-3xl font-bold">SafaiNova</h1>
                 </div>
                 <p className="text-gray-400">Smart Waste Management Platform</p>
               </div>
@@ -366,7 +366,7 @@ function App() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-3">
               <RecycleIcon className="w-8 h-8 text-emerald-500" />
-              <span className="text-xl font-bold">WasteWatch</span>
+              <span className="text-xl font-bold">SafaiNova</span>
             </div>
             <button
               onClick={() => setView('login')}
@@ -441,7 +441,7 @@ function App() {
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <RecycleIcon className="w-8 h-8 text-emerald-500" />
-                <span className="text-xl font-bold">WasteWatch</span>
+                <span className="text-xl font-bold">SafaiNova</span>
               </div>
               <p className="text-gray-400">
                 Optimizing waste management for a sustainable future.
