@@ -1,35 +1,92 @@
+/* Custom Navbar Styling */
 .custom-navbar {
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-    padding: 15px 0;
+    background-color: #1a1a2e; /* Dark, sleek background */
+    padding: 0.5rem 0; /* Reduced padding for smaller height */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Clean separation */
+  }
+  
+  /* Logo Styling */
+  .logo-img {
+    transition: transform 0.3s ease;
+  }
+  
+  .navbar-brand:hover .logo-img {
+    transform: scale(1.05); /* Slightly smaller hover effect */
   }
   
   .navbar-brand {
-    font-size: 1.5rem;
-    color: #f8f9fa !important;
+    font-size: 1.25rem; /* Smaller, elegant font size */
+    color: #ffffff !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px; /* Tighter letter spacing */
+    padding: 0; /* Remove default padding */
   }
   
-  .navbar-nav .nav-link {
-    color: #f8f9fa !important;
-    font-size: 1.1rem;
-    margin-right: 15px;
-    transition: color 0.3s, transform 0.3s;
+  /* Navigation Links */
+  .nav-link {
+    color: #ffffff !important;
+    font-weight: 500;
+    font-size: 0.9rem; /* Smaller font for compactness */
+    padding: 0.4rem 0.8rem; /* Reduced padding */
+    transition: color 0.3s ease, transform 0.2s ease;
   }
   
-  .navbar-nav .nav-link:hover {
-    color: #00d9ff !important;
-    transform: scale(1.1);
+  .nav-link:hover {
+    color: #00aaff !important; /* Vibrant hover color */
+    transform: translateY(-1px); /* Subtle lift */
   }
   
-  .btn-light {
-    background-color: #00d9ff;
-    color: #16213e !important;
-    padding: 8px 20px;
-    font-weight: bold;
-    transition: all 0.3s;
+  /* Call-to-Action Button */
+  .cta-btn {
+    background-color: #00aaff;
+    border: none;
+    padding: 0.4rem 1.2rem; /* Smaller, compact button */
+    font-size: 0.85rem; /* Smaller text */
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
   }
   
-  .btn-light:hover {
-    background-color: #f8f9fa;
-    color: #16213e !important;
+  .cta-btn:hover {
+    background-color: #0088cc;
+    transform: scale(1.03); /* Subtle scale effect */
+    color: #ffffff;
   }
   
+  /* Toggler Icon */
+  .navbar-toggler {
+    border: none;
+    padding: 0.25rem; /* Reduced size */
+  }
+  
+  .navbar-toggler-icon {
+    width: 1.2em; /* Smaller icon */
+    height: 1.2em;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 991px) {
+    .navbar-nav {
+      text-align: center;
+      padding-top: 0.5rem; /* Reduced padding */
+    }
+  
+    .nav-link {
+      padding: 0.3rem 0; /* Even tighter spacing on mobile */
+    }
+  
+    .cta-btn {
+      margin-top: 0.5rem;
+      width: 40%; /* Compact width */
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
+  /* Ensure perfect alignment */
+  .navbar-nav {
+    gap: 0.5rem; /* Consistent spacing between items */
+  }
