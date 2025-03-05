@@ -1,13 +1,12 @@
-// src/pages/LoginPage.tsx
 import React, { useState } from 'react';
 import {
-  RecycleIcon, Fingerprint, Mail, Key, Building2, Loader2,
-  ChevronRight, UserCircle, ShieldCheck, ClipboardList
+  Fingerprint, Mail, Key, Building2, Loader2,
+  ChevronRight, UserCircle, ShieldCheck
 } from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 
-type LoginMethod = 'employee' | 'partner' | 'admin';
+type LoginMethod = 'employee' | 'admin'; // Removed 'partner' from LoginMethod
 type EmployeeRole = 'technician' | 'logistics' | 'supervisor';
 
 interface FormData {
@@ -18,7 +17,7 @@ interface FormData {
   role?: EmployeeRole;
 }
 
-const LoginPage: React.FC = () => {
+const Login: React.FC = () => {
   const [loginMethod, setLoginMethod] = useState<LoginMethod>('employee');
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState<FormData>({
@@ -41,9 +40,6 @@ const LoginPage: React.FC = () => {
       if (loginMethod === 'employee' && (!formData.employeeId || !formData.pin)) {
         throw new Error('Please fill in Employee ID and PIN');
       }
-      if (loginMethod === 'partner' && (!formData.email || !formData.password)) {
-        throw new Error('Please fill in Email and Password');
-      }
       if (loginMethod === 'admin' && (!formData.email || !formData.password)) {
         throw new Error('Please fill in Email and Password');
       }
@@ -51,7 +47,6 @@ const LoginPage: React.FC = () => {
       // Success notification
       const roleMessage = {
         employee: 'Welcome back, Waste Management Professional!',
-        partner: 'Welcome to your Partner Dashboard!',
         admin: 'Welcome, Administrator!',
       }[loginMethod];
 
@@ -75,8 +70,6 @@ const LoginPage: React.FC = () => {
     switch (method) {
       case 'employee':
         return <UserCircle />;
-      case 'partner':
-        return <Building2 />;
       case 'admin':
         return <ShieldCheck />;
       default:
@@ -105,7 +98,7 @@ const LoginPage: React.FC = () => {
         <div>
           {/* Role Selection Tabs */}
           <div className="flex gap-2 mb-6">
-            {(['employee', 'partner', 'admin'] as LoginMethod[]).map((method) => (
+            {(['employee', 'admin'] as LoginMethod[]).map((method) => ( // Removed 'partner' from the array
               <button
                 key={method}
                 onClick={() => setLoginMethod(method)}
@@ -226,4 +219,4 @@ const LoginPage: React.FC = () => {
   );
 };
 
-export default LoginPage;
+export default Login;
