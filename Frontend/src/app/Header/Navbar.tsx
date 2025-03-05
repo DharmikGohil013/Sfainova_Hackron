@@ -103,7 +103,7 @@ const Header = () => {
         ) : (
           <>
             <Link href="/sign-in" className="btn-md btn-outline md:mr-4">
-              SignIn
+              Sign In
             </Link>
           </>
         )}
