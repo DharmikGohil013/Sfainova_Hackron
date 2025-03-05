@@ -58,7 +58,7 @@
 import express from 'express';
 import connectDB from './db.js'; // ✅ Correct: Points to a local file
 import authRoutes from '../Backend/router/auth.js';
-import blogRoutes from './router/blog.jss';
+import blogRoutes from './router/blog.js';
 import bookingRoutes from './router/bookings.js';
 import facilityRoutes from './router/facility.js';
 import userRoutes from './router/users.js';
