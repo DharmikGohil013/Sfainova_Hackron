@@ -4,7 +4,7 @@ import {
 } from 'lucide-react';
 
 function AdminLogin({ setUserRole }) {
-  const [loginMethod, setLoginMethod] = useState('email'); // Default to Email + Password
+  const [loginMethod, setLoginMethod] = useState('email');
   const [employeeId, setEmployeeId] = useState('');
   const [pin, setPin] = useState('');
   const [email, setEmail] = useState('');
@@ -14,9 +14,8 @@ function AdminLogin({ setUserRole }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isBiometricAvailable, setIsBiometricAvailable] = useState(false);
 
-  // Simulated biometric check
   useEffect(() => {
-    setIsBiometricAvailable(window.innerWidth <= 768); // Simulated for mobile
+    setIsBiometricAvailable(window.innerWidth <= 768); // Simulated biometric for mobile
   }, []);
 
   const handleLogin = async (e) => {
@@ -25,9 +24,7 @@ function AdminLogin({ setUserRole }) {
     setError('');
 
     try {
-      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1500));
-
       switch (loginMethod) {
         case 'employee':
           if (employeeId === 'EMP123' && pin === '4567') {
@@ -69,191 +66,171 @@ function AdminLogin({ setUserRole }) {
 
   const getLoginMethodIcon = (method) => {
     switch (method) {
-      case 'employee': return <UserCircle className="w-5 h-5" />;
-      case 'email': return <Mail className="w-5 h-5" />;
-      case 'sso': return <Building2 className="w-5 h-5" />;
-      case 'biometric': return <Fingerprint className="w-5 h-5" />;
+      case 'employee': return <UserCircle className="icon" />;
+      case 'email': return <Mail className="icon" />;
+      case 'sso': return <Building2 className="icon" />;
+      case 'biometric': return <Fingerprint className="icon" />;
       default: return null;
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        {/* Header */}
-        <header className="mb-8">
-          <a href="/" className="text-emerald-400 hover:text-emerald-300 flex items-center gap-2 transition-colors">
-            <ChevronRight className="w-5 h-5" />
+    <div className="min-h-screen bg-gradient-to-br flex items-center justify-center p-4">
+      <div className="container">
+        <header className="header">
+          <a href="/" className="back-link">
+            <ChevronRight className="icon" />
             Back to Homepage
           </a>
         </header>
 
-        {/* Login Container */}
-        <div className="bg-gray-800 rounded-xl shadow-xl p-8">
-          <div className="text-center mb-8">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="text-3xl font-bold">WasteWatch</span>
-            </div>
-            <p className="text-gray-400">Smart Waste Management Platform</p>
+        <div className="login-box">
+          <div className="login-header">
+            <h1 className="title">WasteWatch</h1>
+            <p className="subtitle">Smart Waste Management</p>
           </div>
 
-          {/* Login Method Selector */}
-          <div className="grid grid-cols-2 gap-2 mb-8">
+          <div className="method-selector">
             {['employee', 'email', 'sso', ...(isBiometricAvailable ? ['biometric'] : [])].map((method) => (
               <button
                 key={method}
                 onClick={() => setLoginMethod(method)}
-                className={`py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors capitalize ${
-                  loginMethod === method
-                    ? 'bg-emerald-600 text-white'
-                    : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                }`}
+                className={`method-button ${loginMethod === method ? 'active' : ''}`}
               >
                 {getLoginMethodIcon(method)}
-                {method === 'email' ? 'Email Login' : method}
+                <span>{method === 'email' ? 'Email Login' : method.charAt(0).toUpperCase() + method.slice(1)}</span>
               </button>
             ))}
           </div>
 
-          {/* Login Form */}
-          <form onSubmit={handleLogin} className="space-y-6">
+          <form onSubmit={handleLogin} className="form">
             {loginMethod === 'employee' && (
               <>
-                <div className="space-y-2">
-                  <label htmlFor="employeeId" className="block text-sm font-medium text-gray-300">
-                    Employee ID
-                  </label>
-                  <div className="relative">
+                <div className="input-group">
+                  <label htmlFor="employeeId" className="label">Employee ID</label>
+                  <div className="input-wrapper">
+                    <UserCircle className="input-icon" />
                     <input
                       type="text"
                       id="employeeId"
                       value={employeeId}
                       onChange={(e) => setEmployeeId(e.target.value)}
                       placeholder="e.g., EMP123"
-                      className="w-full bg-gray-700 rounded-lg px-4 py-3 pl-10 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                      className="input"
                       required
                     />
-                    <UserCircle className="w-5 h-5 text-gray-400 absolute left-3 top-3.5" />
                   </div>
                 </div>
-                <div className="space-y-2">
-                  <label htmlFor="pin" className="block text-sm font-medium text-gray-300">
-                    PIN
-                  </label>
-                  <div className="relative">
+                <div className="input-group">
+                  <label htmlFor="pin" className="label">PIN</label>
+                  <div className="input-wrapper">
+                    <Key className="input-icon" />
                     <input
                       type="password"
                       id="pin"
                       value={pin}
                       onChange={(e) => setPin(e.target.value)}
                       placeholder="Enter 4-digit PIN"
-                      className="w-full bg-gray-700 rounded-lg px-4 py-3 pl-10 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                      className="input"
                       required
                     />
-                    <Key className="w-5 h-5 text-gray-400 absolute left-3 top-3.5" />
                   </div>
                 </div>
-                <p className="text-sm text-gray-400">For technicians managing automated systems.</p>
+                <p className="info">For technicians managing automated systems.</p>
               </>
             )}
 
             {loginMethod === 'email' && (
               <>
-                <div className="space-y-2">
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300">
-                    Email Address
-                  </label>
-                  <div className="relative">
+                <div className="input-group">
+                  <label htmlFor="email" className="label">Email Address</label>
+                  <div className="input-wrapper">
+                    <Mail className="input-icon" />
                     <input
                       type="email"
                       id="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="e.g., admin@blinkit.com"
-                      className="w-full bg-gray-700 rounded-lg px-4 py-3 pl-10 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                      className="input"
                       required
                     />
-                    <Mail className="w-5 h-5 text-gray-400 absolute left-3 top-3.5" />
                   </div>
                 </div>
-                <div className="space-y-2">
-                  <label htmlFor="password" className="block text-sm font-medium text-gray-300">
-                    Password
-                  </label>
-                  <div className="relative">
+                <div className="input-group">
+                  <label htmlFor="password" className="label">Password</label>
+                  <div className="input-wrapper">
+                    <Key className="input-icon" />
                     <input
                       type="password"
                       id="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Enter password"
-                      className="w-full bg-gray-700 rounded-lg px-4 py-3 pl-10 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                      className="input"
                       required
                     />
-                    <Key className="w-5 h-5 text-gray-400 absolute left-3 top-3.5" />
                   </div>
                 </div>
-                <p className="text-sm text-gray-400">For admins or dark store partners.</p>
+                <p className="info">For admins or dark store partners.</p>
               </>
             )}
 
             {loginMethod === 'sso' && (
-              <div className="space-y-2">
-                <label htmlFor="ssoProvider" className="block text-sm font-medium text-gray-300">
-                  SSO Provider
-                </label>
-                <div className="relative">
+              <div className="input-group">
+                <label htmlFor="ssoProvider" className="label">SSO Provider</label>
+                <div className="input-wrapper">
+                  <Building2 className="input-icon" />
                   <select
                     id="ssoProvider"
                     value={ssoProvider}
                     onChange={(e) => setSsoProvider(e.target.value)}
-                    className="w-full bg-gray-700 rounded-lg px-4 py-3 pl-10 focus:ring-2 focus:ring-emerald-500 focus:outline-none appearance-none"
+                    className="select"
                     required
                   >
                     <option value="">Select Provider</option>
                     <option value="zomato">Zomato SSO</option>
                     <option value="blinkit">Blinkit SSO</option>
                   </select>
-                  <Building2 className="w-5 h-5 text-gray-400 absolute left-3 top-3.5" />
                 </div>
-                <p className="text-sm text-gray-400">For enterprise clients like Blinkit.</p>
+                <p className="info">For enterprise clients like Blinkit.</p>
               </div>
             )}
 
             {loginMethod === 'biometric' && (
-              <div className="text-center">
-                <p className="text-gray-400 mb-4">Press the button to authenticate with biometrics</p>
+              <div className="biometric-section">
+                <p className="info mb-4">Authenticate with biometrics</p>
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
+                  className="submit-button"
                 >
                   {isLoading ? (
                     <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
+                      <Loader2 className="icon animate-spin" />
                       Authenticating...
                     </>
                   ) : (
                     <>
-                      <Fingerprint className="w-5 h-5" />
+                      <Fingerprint className="icon" />
                       Scan Fingerprint/Face
                     </>
                   )}
                 </button>
-                <p className="text-sm text-gray-400 mt-4">For field staff using mobile devices.</p>
+                <p className="info mt-4">For field staff using mobile devices.</p>
               </div>
             )}
 
-            {error && <p className="text-red-500 text-sm">{error}</p>}
+            {error && <p className="error">{error}</p>}
             {loginMethod !== 'biometric' && (
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
+                className="submit-button"
               >
                 {isLoading ? (
                   <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
+                    <Loader2 className="icon animate-spin" />
                     Authenticating...
                   </>
                 ) : (
@@ -266,10 +243,9 @@ function AdminLogin({ setUserRole }) {
             )}
           </form>
 
-          {/* Additional Options */}
           {loginMethod !== 'biometric' && (
-            <div className="mt-6 text-center">
-              <a href="#" className="text-sm text-emerald-400 hover:text-emerald-300">
+            <div className="extra-options">
+              <a href="#" className="forgot-link">
                 Forgot your {loginMethod === 'employee' ? 'PIN' : 'password'}?
               </a>
             </div>
