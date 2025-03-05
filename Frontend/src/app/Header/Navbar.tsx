@@ -1,17 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { IonIcon } from "@ionic/react";
-import { menuOutline } from "ionicons/icons";
-import { closeOutline } from "ionicons/icons";
-import { location } from "ionicons/icons";
+import { menuOutline, closeOutline, location } from "ionicons/icons";
 import logo from "../../assets/bugb.png";
-import { getEmail, getUser, getUserName, handleLogout, isAuthenticated } from "../sign-in/auth";
-import { FiUser } from "react-icons/fi";
-import getLocation from "../utils/getLocation";
-import "../Header/DamageProducts";
-import "../Header/ExpiredProductsList";
+import { getUser, handleLogout, isAuthenticated } from "../sign-in/auth";
 
 interface NavItemProps {
   label: string;
@@ -27,64 +21,6 @@ const Header = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  useEffect(() => {
-    document.documentElement.classList.remove("no-js");
-
-    if (navigator.geolocation) {
-      const options = {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0,
-      };
-
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const lat = position.coords.latitude;
-          const lon = position.coords.longitude;
-
-          fetch(
-            `https://api.mapbox.com/geocoding/v5/mapbox.places/${lon},${lat}.json?access_token=pk.eyJ1Ijoic2h1ZW5jZSIsImEiOiJjbG9wcmt3czMwYnZsMmtvNnpmNTRqdnl6In0.vLBhYMBZBl2kaOh1Fh44Bw`
-          )
-            .then((response) => response.json())
-            .then((data) => {
-              const city = data.features[0].context.find((context: { id: string | string[] }) =>
-                context.id.includes("place")
-              ).text;
-              const state = data.features[0].context.find((context: { id: string | string[] }) =>
-                context.id.includes("region")
-              ).text;
-              setLocation(`${city}, ${state}`);
-            })
-            .catch((error) => {
-              console.error("Error:", error);
-            });
-        },
-        (error) => {
-          console.error(error);
-        },
-        options
-      );
-    } else {
-      console.error("Geolocation is not supported by this browser.");
-    }
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setIsHeaderActive(true);
-      } else {
-        setIsHeaderActive(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   const user = getUser();
 
   const toggleNavbar = () => {
@@ -92,8 +28,13 @@ const Header = () => {
   };
 
   return (
-    <header className={`header ${isHeaderActive ? "active" : ""}`} data-header>
-      <div className="container shadow-md">
+    <header
+      className={`fixed top-0 left-0 w-full z-50 header bg-white bg-opacity-95 ${
+        isHeaderActive ? "active" : ""
+      }`}
+      data-header
+    >
+      <div className="container shadow-md py-4">
         {/* Logo */}
         <Link href="/">
           <Image
@@ -101,16 +42,13 @@ const Header = () => {
             alt="ELocate"
             width={100}
             height={100}
-            className="logo ml-4 logo md:ml-16"
+            className="logo ml-4 md:ml-16"
           />
         </Link>
 
         {/* Navbar */}
         <nav className={`navbar ${isNavbarActive ? "active" : ""}`} data-navbar>
           <div className="wrapper">
-            <Link href="/" className="logo">
-              
-            </Link>
             <button
               className="nav-close-btn"
               aria-label="close menu"
@@ -132,6 +70,7 @@ const Header = () => {
             <NavItem label="Recycle" />
             <NavItem label="Education" />
             <NavItem label="Expire Products" />
+            <NavItem label="Dashboard" />
           </ul>
         </nav>
 
@@ -201,6 +140,8 @@ const NavItem = ({ label }: NavItemProps) => {
             ? "/"
             : label === "Expire Products"
             ? "/expired-products"
+            : label === "Dashboard"
+            ? "/dashboard"
             : `/${label.toLowerCase().replace(/ /g, "-")}`
         }
       >
