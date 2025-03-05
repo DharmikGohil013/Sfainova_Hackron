@@ -1,4 +1,3 @@
-// app/Header/Header.jsx
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
@@ -30,7 +29,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 header ${
+      className={`fixed top-0 left-0 w-full z-50 header bg-white bg-opacity-95 ${
         isHeaderActive ? "active" : ""
       }`}
       data-header

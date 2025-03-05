@@ -47,7 +47,7 @@ const Dashboard = () => {
       className="min-h-screen bg-gray-50 pt-20 p-8" // Added pt-20 for padding-top
     >
       {/* Header */}
-      <h1 className="text-3xl font-bold text-emerald-600 mb-8">Admin Dashboard</h1>
+      <h1 className="text-3xl font-bold text-emerald-600 mb-8  mt-32">Admin Dashboard</h1>
 
       {/* Admin Stats Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
