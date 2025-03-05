@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/Sfainova')
+mongoose.connect('mongodb://127.0.0.1:27017/fit-sync')
   .then(() => {
     console.log('MongoDB connected successfully');
   })
