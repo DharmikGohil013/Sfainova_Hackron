@@ -1,0 +1,202 @@
+/* AdminSignup Styles */
+
+/* Container */
+.min-h-screen {
+    min-height: 100vh;
+  }
+  
+  .bg-gray-50 {
+    background-color: #f9fafb;
+  }
+  
+  /* Flex utilities */
+  .flex { display: flex; }
+  .items-center { align-items: center; }
+  .justify-center { justify-content: center; }
+  .gap-2 { gap: 0.5rem; }
+  .gap-3 { gap: 0.75rem; }
+  .gap-4 { gap: 1rem; }
+  .gap-8 { gap: 2rem; }
+  
+  /* Panels for split layout */
+  .max-w-7xl { max-width: 80rem; }
+  .full-width { width: 100%; }
+  .full-height { height: 100%; }
+  
+  .illustration-panel {
+    width: 50%;
+    display: none;
+  }
+  
+  .form-panel {
+    width: 100%;
+  }
+  
+  @media (min-width: 768px) {
+    .illustration-panel {
+      display: block;
+    }
+    .form-panel {
+      width: 50%;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .illustration-panel {
+      display: none;
+    }
+    .form-panel {
+      width: 100%;
+      height: auto;
+      padding: 1rem;
+    }
+    .max-w-7xl { max-width: 100%; }
+  }
+  
+  /* Background gradient for illustration panel */
+  .bg-gradient-to-br {
+    background: linear-gradient(to bottom right, #2563eb, #38bdf8);
+  }
+  
+  /* Tech illustration (replace with actual image URL or SVG) */
+  .tech-illustration {
+    background-image: url('path/to/tech-illustration.png'); /* Replace with your isometric tech image */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.9;
+  }
+  
+  /* Signup form container */
+  .bg-white {
+    background-color: #fff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+  }
+  
+  /* Typography */
+  .text-4xl { font-size: 2.25rem; }
+  .text-lg { font-size: 1.125rem; }
+  .font-bold { font-weight: 700; }
+  .font-medium { font-weight: 500; }
+  .text-sm { font-size: 0.875rem; }
+  .text-gray-900 { color: #111827; }
+  .text-gray-600 { color: #4a5568; }
+  .text-gray-500 { color: #6b7280; }
+  .text-blue-600 { color: #2563eb; }
+  .text-blue-500 { color: #1d4ed8; }
+  .text-red-500 { color: #ef4444; }
+  
+  /* Padding and margins */
+  .p-8 { padding: 2rem; }
+  .mb-10 { margin-bottom: 2.5rem; }
+  .mb-8 { margin-bottom: 2rem; }
+  .mb-4 { margin-bottom: 1rem; }
+  .mb-2 { margin-bottom: 0.5rem; }
+  .mt-2 { margin-top: 0.5rem; }
+  .mt-8 { margin-top: 2rem; }
+  
+  /* Form */
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .label {
+    font-weight: 500;
+  }
+  
+  .input-wrapper {
+    position: relative;
+  }
+  
+  .input-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #6b7280;
+  }
+  
+  .input, .select {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 3.5rem; /* Slightly increased padding for a luxurious feel */
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .input:focus, .select:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  }
+  
+  .select {
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="%236b7280"%3E%3Cpath stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"%3E%3C/path%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+    appearance: none;
+  }
+  
+  /* Submit button */
+  .submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background-color: #2563eb;
+    color: #fff;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+  }
+  
+  .submit-button:hover:not(:disabled) {
+    background-color: #1d4ed8;
+    transform: translateY(-2px); /* Subtle lift effect */
+  }
+  
+  .submit-button:disabled {
+    background-color: #d1d5db;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  
+  /* Icon styles */
+  .icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  /* Error message */
+  .error {
+    font-size: 0.875rem;
+    color: #ef4444;
+    text-align: center;
+    padding: 0.5rem;
+  }
+  
+  /* Login link */
+  .text-blue-600:hover {
+    text-decoration: underline;
+  }
+  
+  /* Animation for Loader */
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }

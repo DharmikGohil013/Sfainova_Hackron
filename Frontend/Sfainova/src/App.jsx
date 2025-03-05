@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
-import Home from '../src/Components/AdminLogin';
+import Home from './Components/AdminSignup';
 import AdminLogin from '../src/Components/Dashboard';
 import Dashboard from '../src/Components/home'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
