@@ -42,7 +42,7 @@ export default function RootLayout({
             `,
         }}
       />{" "}
-      {/* <Script
+      <Script
       id="tawk_chatbot"
         type="text/javascript"
         dangerouslySetInnerHTML={{
@@ -59,7 +59,7 @@ export default function RootLayout({
               })();
             `,
         }}
-      /> */}
+      />
       <body className={poppins.className}>
       <NextTopLoader color="#28af60" showSpinner={false}/>
       <Navbar/>
