@@ -56,7 +56,7 @@ const SignUp: React.FC = () => {
   return (
     <>
       <div className="my-3 text-center">
-        <span className=" text-4xl font-bold">Welcome to Elocate</span>
+        <span className=" text-4xl font-bold">Welcome to Safainova</span>
         <span className="font-light text-gray-400 mb-4">
           Please enter your details to register
         </span>

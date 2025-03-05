@@ -13,7 +13,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Safainova",
-  description: "ELocate - One stop solution to Recycle Ai-Base, Ai-Base Facility Locator",
+  description: "Safainova - One stop solution to Recycle E-Waste, E-waste Facility Locator",
 };
 
 
@@ -47,7 +47,7 @@ export default function RootLayout({
             `,
         }}
       />{" "}
-      <Script
+      {/* <Script
       id="tawk_chatbot"
         type="text/javascript"
         dangerouslySetInnerHTML={{
@@ -64,7 +64,7 @@ export default function RootLayout({
               })();
             `,
         }}
-      />
+      /> */}
       <body className={poppins.className}>
       <NextTopLoader color="#28af60" showSpinner={false}/>
       <Navbar/>

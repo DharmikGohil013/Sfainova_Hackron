@@ -10,7 +10,7 @@ const Home = (props: Props) => {
     <>
     <Hero/>
     <Features/>
-    <FAQ/>
+    {/* <FAQ/> */}
     </>
   )
 }

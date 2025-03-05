@@ -121,8 +121,8 @@ const user = getUser();
             <NavItem label="E-Facilities" />
             <NavItem label="Recycle" />
             <NavItem label="Education" />
-            <NavItem label="Contactus" />
-            <NavItem label="Rules" />
+            {/* <NavItem label="Contactus" /> */}
+            {/* <NavItem label="Rules" /> */}
           </ul>
         </nav>
 

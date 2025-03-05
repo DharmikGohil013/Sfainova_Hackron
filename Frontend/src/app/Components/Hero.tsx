@@ -4,8 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import hero from "../../assets/hero-banner.png";
-import { IonIcon } from "@ionic/react";
-import { play } from "ionicons/icons";
 
 const solutions = [
   "Recycling Solution",
@@ -36,7 +34,7 @@ const   HeroSection: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="hero-content text-center">
           <p className="mb-4 hero-subtitle has-before">
-            Welcome to ELocate
+            Welcome to Safainova
           </p>
 
           <h1 className="h1 hero-title text-center md:text-start font-bold mb-6">
@@ -48,13 +46,13 @@ const   HeroSection: React.FC = () => {
               animate="animate"
               key={currentSolution}
             >
-              E-Waste {''}
+              Ai-Base {''}
               {currentSolution}
             </motion.span>
           </h1>
 
           <p className="text-gray-700 mb-8 text-center md:text-start">
-          ELocate: Transforming E-Waste Management. Find E-waste facilities effortlessly with our platform. Your key to responsible recycling and sustainability.
+          ELocate: Transforming Ai-Base Management. Find Ai-Base facilities effortlessly with our platform. Your key to responsible recycling and sustainability.
           </p>
 
           <div className="flex flex-row md:flex-row items-center justify-center md:justify-start sm:space-y-0 md:space-x-4 mb-10">

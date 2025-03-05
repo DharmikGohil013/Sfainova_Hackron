@@ -4,39 +4,39 @@ import AboutUs from "../about/About";
 const elocateFeatures = [
   {
     number: "01",
-    title: "Comprehensive E-Waste Collection",
+    title: "Automated Waste Sorting",
     description:
-      "A network of reliable and certified e-waste collection facilities to ensure responsible disposal.",
+      "Technology automatically categorizes waste into different types, improving sorting accuracy and reducing manual labor",
   },
   {
     number: "02",
-    title: "Educational Resources",
+    title: "Real-time Waste Monitoring",
     description:
-      "Detailed information about e-waste and collection facilities to empower users with knowledge.",
+      "Sensors track waste levels in containers, enabling efficient scheduling and preventing overflow.",
   },
   {
     number: "03",
-    title: "User-Friendly Interface",
+    title: "Optimized Collection Routes",
     description:
-      "A dynamic and easy-to-use platform for individuals and businesses seeking e-waste solutions.",
+      "AI-driven systems optimize waste collection paths within the store to save time and resources.",
   },
   {
     number: "04",
-    title: "Interactive Chatbot",
+    title: "Waste Reduction Insights",
     description:
-      "An intelligent chatbot for immediate access to FAQs and educational resources, fostering awareness.",
+      "Data analysis identifies waste patterns, helping stores adjust operations to minimize waste generation.",
   },
   {
     number: "05",
-    title: "Streamlined Booking System",
+    title: "Integration with Sustainability Goals",
     description:
-      "Efficient booking system with a credit mechanism to encourage responsible disposal practices.",
+      "Automated systems help track and report waste-related data, supporting environmental sustainability efforts.",
   },
   {
     number: "06",
-    title: "Facility Management Dashboard",
+    title: "Automated Waste Recycling",
     description:
-      "Comprehensive dashboard for facility owners to manage bookings and credits seamlessly.",
+      "Machines separate recyclable materials automatically, streamlining the recycling process and reducing reliance on external services.",
   },
 ];
 
