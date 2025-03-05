@@ -1,14 +1,13 @@
+// Backend/routes/bookingRoutes.js
 import express from 'express';
-import { createBooking, getAllBookings, getBooking } from '../controllers/bookingController.js';
-import { verifyAdmin } from '../utils/verifyToken.js';
+import { createBooking, getBooking, getAllBookings, getBookingByUser, getBookingsByFacility } from '../controllers/bookingController.js';
 
-const bookingRoute = express.Router();
+const router = express.Router();
 
-// Create a new review for a tour
-bookingRoute.post('/', createBooking);
+router.post('/', createBooking);
+router.get('/:id', getBooking);
+router.get('/', getAllBookings);
+router.get('/user/:userId', getBookingByUser);
+router.get('/facility/:facilityId', getBookingsByFacility);
 
-bookingRoute.get('/:id', getBooking);
-
-bookingRoute.get('/', getAllBookings);
-
-export default bookingRoute
+export default router;

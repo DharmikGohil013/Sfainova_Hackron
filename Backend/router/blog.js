@@ -1,21 +1,13 @@
+// Backend/routes/blogRoutes.js
 import express from 'express';
-import {
-  createBlog,
-  updateBlog,
-  getSingleBlog,
-  getAllBlogs,
-  getFeaturedBlogs} from '../controllers/blogController.js';
+import { createBlog, updateBlog, getSingleBlog, getAllBlogs, getFeaturedBlogs } from '../controllers/blogController.js';
 
-const blogRoute = express.Router();
+const router = express.Router();
 
-blogRoute.get('/featured', getFeaturedBlogs);
+router.post('/', createBlog);
+router.put('/:id', updateBlog);
+router.get('/:id', getSingleBlog);
+router.get('/', getAllBlogs);
+router.get('/featured', getFeaturedBlogs);
 
-blogRoute.get('/:id', getSingleBlog);
-
-blogRoute.get('/', getAllBlogs);
-
-blogRoute.post('/', createBlog);
-
-blogRoute.put('/:id', updateBlog);
-
-export default blogRoute;
+export default router;

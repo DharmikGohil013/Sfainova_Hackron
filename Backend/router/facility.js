@@ -1,14 +1,11 @@
+// Backend/routes/facilityRoutes.js
 import express from 'express';
-import { addFacility, getAllFacilities, getFacilityById } from '../controllers/facilityController.js';
+import { getAllFacilities, getFacilityById, addFacility } from '../controllers/facilityController.js';
 
+const router = express.Router();
 
-const facilityRouter = express.Router();
+router.get('/', getAllFacilities);
+router.get('/:id', getFacilityById);
+router.post('/', addFacility);
 
-facilityRouter.post('/' ,addFacility);
-
-facilityRouter.get('/:id', getFacilityById);
-
-facilityRouter.get('/', getAllFacilities);
-
-
-export default facilityRouter;
+export default router;
