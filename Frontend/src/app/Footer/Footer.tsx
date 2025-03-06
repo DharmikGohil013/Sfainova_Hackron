@@ -149,7 +149,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <IonIcon icon={mail} className="text-primary" />
-                <span>info@elocate.com</span>
+                <span>info@SafaiNOVA.com</span>
               </li>
             </ul>
             <div className="social-icons mt-6 flex gap-4">
@@ -171,9 +171,9 @@ const Footer = () => {
       <div className="footer-bottom">
         <div className="container flex flex-col md:flex-row justify-between items-center py-4">
           <p className="copyright text-center md:text-left">
-            &copy; 2023 ELocate | All Rights Reserved by{" "}
+            &copy; 2023 ELocate | All Rights Reserved by {"SafaiNOVA"}
             <Link href="#" className="copyright-link">
-              Spam Byte
+              
             </Link>
           </p>
           <ul className="footer-bottom-list flex flex-wrap justify-center md:justify-start gap-4 mt-4 md:mt-0">

@@ -68,7 +68,7 @@ const ContactUs = () => {
 
   return (
     <><Head>
-     <title>ELocate- ContactUs</title> </Head><div className="px-4 w-full py-16 lg:py-24 md:pb-32 md:container">
+     <title></title> </Head><div className="px-4 w-full py-16 lg:py-24 md:pb-32 md:container">
       <ToastContainer
         className="text-2xl"
         position="top-right"
@@ -84,7 +84,7 @@ const ContactUs = () => {
 
       <div className="flex flex-col items-center justify-center px-10">
         <div className="text-black section-subtitle text-center font-bold text-2xl md:text-4xl 2xl:text-6xl uppercase tracking-widest teamHeadingText">
-          -Contact Us-
+         
         </div>
         <div className="text-black text-center text-xl md:text-3xl mt-4">
           Have questions or inquiries? Get in touch with us!
@@ -184,7 +184,7 @@ const ContactUs = () => {
               <li className="footer-item">
                 <IonIcon icon={location} aria-hidden="true"></IonIcon>
                 <address className="contact-link address">
-                  Chh. Sambhajinagar (Aurangabad), Maharashtra, 431001
+                 BlinkIT
                 </address>
               </li>
               <li className="footer-item">
@@ -195,7 +195,7 @@ const ContactUs = () => {
                   href="tel:+911234567890"
                   className="contact-link"
                 >
-                  +911234567890
+                  +919624105887
                 </Link>
               </li>
               <li className="footer-item">

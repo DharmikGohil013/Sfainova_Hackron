@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { IonIcon } from "@ionic/react";
 import { menuOutline, closeOutline, location } from "ionicons/icons";
-import logo from "../../assets/bugb.png";
-import { getUser, handleLogout, isAuthenticated } from "../sign-in/auth";
+import logo from "../../assets/abc.png";
+import { getUser, handleLogout } from "../sign-in/auth";
 
 interface NavItemProps {
   label: string;
@@ -39,7 +39,7 @@ const Header = () => {
         <Link href="/">
           <Image
             src={logo}
-            alt="ELocate"
+            alt="Safainova"
             width={100}
             height={100}
             className="logo ml-4 md:ml-16"
@@ -68,8 +68,8 @@ const Header = () => {
             <NavItem label="About" />
             <NavItem label="E-Facilities" />
             <NavItem label="Recycle" />
+            <NavItem label="Waste Products" />
             <NavItem label="Education" />
-            <NavItem label="Expire Products" />
             <NavItem label="Dashboard" />
           </ul>
         </nav>
@@ -94,7 +94,10 @@ const Header = () => {
                 <Link href="/profile" className="hover:text-emerald-500">
                   Profile
                 </Link>
-                <button className="hover:text-emerald-500" onClick={handleLogout}>
+                <button
+                  className="hover:text-emerald-500"
+                  onClick={handleLogout}
+                >
                   Logout
                 </button>
               </div>
