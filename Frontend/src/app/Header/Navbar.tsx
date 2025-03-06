@@ -40,8 +40,8 @@ const Header = () => {
           <Image
             src={logo}
             alt="Safainova"
-            width={100}
-            height={100}
+            width={70}
+            height={70}
             className="logo ml-4 md:ml-16"
           />
         </Link>
