@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import Recycle from "./Recycle";
-import WasteProductsPage from "../Components/waste-products";
+// import Recycle from "./Recycle";
+import WasteProductsPage from "./waste-products";
 
 const Page = () => {
   return (
@@ -14,7 +14,7 @@ const Page = () => {
         transition={{ duration: 0.5 }}
       >
         <div className="md:mt-20 mt-16 pt-8">
-          <Recycle />
+         
           <WasteProductsPage />
         </div>
       </motion.div>
