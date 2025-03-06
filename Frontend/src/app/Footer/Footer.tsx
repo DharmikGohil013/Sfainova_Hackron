@@ -99,7 +99,7 @@ const Footer = () => {
                 width={100}
                 height={100}
                 className="logo"
-              />
+              />``
             </Link>
             <form onSubmit={SendMsg} className="newsletter-form mt-4">
               <input
@@ -141,7 +141,7 @@ const Footer = () => {
             <ul className="mt-4 space-y-4">
               <li className="flex items-center gap-3">
                 <IonIcon icon={location} className="text-primary" />
-                <span>Your Address Here</span>
+                <span>Your Address Here</span>  
               </li>
               <li className="flex items-center gap-3">
                 <IonIcon icon={call} className="text-primary" />

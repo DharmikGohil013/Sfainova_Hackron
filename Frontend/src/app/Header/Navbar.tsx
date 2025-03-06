@@ -68,7 +68,7 @@ const Header = () => {
             <NavItem label="About" />
             <NavItem label="E-Facilities" />
             <NavItem label="Recycle" />
-            <NavItem label="Waste Products" />
+            
             <NavItem label="Education" />
             <NavItem label="Dashboard" />
           </ul>

@@ -1,7 +1,6 @@
 "use client"; // Keep this for App Router (Next.js 13+); remove if using Pages Router (Next.js 12 or earlier)
-import React, { useState } from "react";
-import Header from "../Header/Navbar"; // Adjusted path based on typical Next.js structure
-import Image from "next/image";
+import React, { useState, useEffect } from "react";
+import Header from "../Header/Navbar"; // Adjusted path based on typical Next.jsimport Image from "next/image";
 
 // Sample data for Damaged and Expired Products (expanded with more items)
 const damagedProducts = [
@@ -110,25 +109,94 @@ const expiredProducts = [
   },
 ];
 
+// Reusable Product Card Component
+const ProductCard = ({ product, onManage }) => {
+  return (
+    <div
+      className="bg-white/10 backdrop-blur-md shadow-xl rounded-xl p-6 hover:shadow-2xl hover:bg-white/20 transition-all duration-500 transform hover:-translate-y-2 cursor-pointer group"
+    >
+      {/* <Image
+        src={product.image}
+        alt={product.name}
+        width={400}
+        height={250}
+        className="w-full h-56 object-cover rounded-t-xl transition-opacity duration-300 group-hover:opacity-90"
+        priority
+      /> */}
+      <div className="p-6">
+        <h3 className="text-2xl font-semibold text-gray-100 mb-3 group-hover:text-emerald-400 transition-colors duration-300">
+          {product.name}
+        </h3>
+        <p className="text-gray-300 mb-4 line-clamp-2 group-hover:text-gray-200 transition-colors duration-300">
+          {product.description}
+        </p>
+        <div className="space-y-2 text-sm">
+          <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+            {product.quantity ? `Quantity: ${product.quantity}` : `Expiry Date: ${product.expiryDate}`}
+          </p>
+          <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+            Location: {product.location}
+          </p>
+          <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+            {product.dateReported ? `Reported: ${product.dateReported}` : `Expired: ${product.expiryDate}`}
+          </p>
+          <p className="text-emerald-400 font-medium group-hover:text-emerald-300 transition-colors duration-300">
+            Status: {product.status}
+          </p>
+        </div>
+        <button
+          onClick={() => onManage(product)}
+          className="mt-6 w-full bg-emerald-600 text-white py-3 rounded-lg font-medium hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
+        >
+          Manage Item
+        </button>
+      </div>
+    </div>
+  );
+};
+
 const WasteProductsPage = () => {
   const [activeSection, setActiveSection] = useState("damaged"); // Default to Damaged Products
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  // Simulate a modal or alert for managing an item (no external dependencies)
+  const handleManage = (product) => {
+    setSelectedProduct(product);
+    alert(`Managing ${product.name}\nLocation: ${product.location}\nStatus: ${product.status}\nAction required: Update or schedule disposal/recycling.`);
+    setSelectedProduct(null); // Reset after showing alert
+  };
+
+  // Animation effect using useEffect for a smooth entrance (no external libraries)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const elements = document.querySelectorAll('.animate-slideIn');
+      elements.forEach((el, index) => {
+        el.classList.add('opacity-100', 'translate-y-0');
+        el.classList.remove('opacity-0', 'translate-y-20');
+      });
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [activeSection]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-100 overflow-hidden">
       <Header />
-      <main className="container mx-auto px-4 py-16">
-        <h1 className="text-5xl font-bold text-emerald-400 mb-12 text-center">
-          SafaiNova Waste Management Automation
-        </h1>
-        <p className="text-gray-300 mb-12 text-center max-w-4xl mx-auto text-lg leading-relaxed">
-          Discover our cutting-edge waste management solutions for damaged and expired products, designed to optimize recycling, disposal, and sustainability for a cleaner future with SafaiNova.
-        </p>
+      <main className="container mx-auto px-6 py-20">
+        <div className="text-center mb-16">
+          <h1 className="text-5xl font-bold text-emerald-400 mb-6 animate-slideIn">
+            SafaiNova Waste Management Automation
+          </h1>
+          <p className="text-gray-300 max-w-4xl mx-auto text-lg leading-relaxed animate-slideIn">
+            Discover our cutting-edge waste management solutions for damaged and expired products, designed to optimize recycling, disposal, and sustainability for a cleaner future with SafaiNova.
+          </p>
+        </div>
 
         {/* Tabs for Damaged and Expired Products */}
-        <div className="flex justify-center mb-12 space-x-6">
+        <div className="flex justify-center mb-12 space-x-8">
           <button
             onClick={() => setActiveSection("damaged")}
-            className={`px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+            className={`px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 ${
               activeSection === "damaged"
                 ? "bg-emerald-600 text-white shadow-lg"
                 : "bg-gray-700 text-gray-300 hover:bg-gray-600 hover:shadow-md"
@@ -138,7 +206,7 @@ const WasteProductsPage = () => {
           </button>
           <button
             onClick={() => setActiveSection("expired")}
-            className={`px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+            className={`px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 ${
               activeSection === "expired"
                 ? "bg-emerald-600 text-white shadow-lg"
                 : "bg-gray-700 text-gray-300 hover:bg-gray-600 hover:shadow-md"
@@ -150,43 +218,18 @@ const WasteProductsPage = () => {
 
         {/* Damaged Products Section */}
         {activeSection === "damaged" && (
-          <section className="mb-16">
-            <h2 className="text-3xl font-semibold text-emerald-400 mb-8">
-              Damaged Products
-            </h2>
-            <p className="text-gray-400 mb-8 text-lg">
-              Efficiently manage and track damaged items requiring specialized handling, recycling, or disposal with SafaiNova’s automation tools.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <section className="mb-20 animate-slideIn">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-semibold text-emerald-400 mb-4">
+                Damaged Products
+              </h2>
+              <p className="text-gray-400 max-w-3xl mx-auto text-lg">
+                Efficiently manage and track damaged items requiring specialized handling, recycling, or disposal with SafaiNova’s advanced automation tools.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
               {damagedProducts.map((product) => (
-                <div
-                  key={product.id}
-                  className="bg-white/10 backdrop-blur-md shadow-xl rounded-xl p-6 hover:shadow-2xl hover:bg-white/20 transition-all duration-500 transform hover:-translate-y-2"
-                >
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    width={400}
-                    height={250}
-                    className="w-full h-56 object-cover rounded-t-xl"
-                    priority
-                  />
-                  <div className="p-6">
-                    <h3 className="text-2xl font-semibold text-gray-100 mb-3">
-                      {product.name}
-                    </h3>
-                    <p className="text-gray-300 mb-4 line-clamp-2">{product.description}</p>
-                    <div className="space-y-2 text-sm">
-                      <p className="text-gray-400">Quantity: {product.quantity}</p>
-                      <p className="text-gray-400">Location: {product.location}</p>
-                      <p className="text-gray-400">Reported: {product.dateReported}</p>
-                      <p className="text-emerald-400 font-medium">Status: {product.status}</p>
-                    </div>
-                    <button className="mt-6 w-full bg-emerald-600 text-white py-3 rounded-lg font-medium hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
-                      Manage Item
-                    </button>
-                  </div>
-                </div>
+                <ProductCard key={product.id} product={product} onManage={handleManage} />
               ))}
             </div>
           </section>
@@ -194,55 +237,50 @@ const WasteProductsPage = () => {
 
         {/* Expired Products Section */}
         {activeSection === "expired" && (
-          <section>
-            <h2 className="text-3xl font-semibold text-emerald-400 mb-8">
-              Expired Products
-            </h2>
-            <p className="text-gray-400 mb-8 text-lg">
-              Safely handle and automate the disposal or recycling of expired products with our advanced waste management platform.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <section className="animate-slideIn">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-semibold text-emerald-400 mb-4">
+                Expired Products
+              </h2>
+              <p className="text-gray-400 max-w-3xl mx-auto text-lg">
+                Safely handle and automate the disposal or recycling of expired products with our state-of-the-art waste management platform.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
               {expiredProducts.map((product) => (
-                <div
-                  key={product.id}
-                  className="bg-white/10 backdrop-blur-md shadow-xl rounded-xl p-6 hover:shadow-2xl hover:bg-white/20 transition-all duration-500 transform hover:-translate-y-2"
-                >
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    width={400}
-                    height={250}
-                    className="w-full h-56 object-cover rounded-t-xl"
-                    priority
-                  />
-                  <div className="p-6">
-                    <h3 className="text-2xl font-semibold text-gray-100 mb-3">
-                      {product.name}
-                    </h3>
-                    <p className="text-gray-300 mb-4 line-clamp-2">{product.description}</p>
-                    <div className="space-y-2 text-sm">
-                      <p className="text-gray-400">Expiry Date: {product.expiryDate}</p>
-                      <p className="text-gray-400">Location: {product.location}</p>
-                      <p className="text-gray-400">Quantity: {product.quantity}</p>
-                      <p className="text-emerald-400 font-medium">Status: {product.status}</p>
-                    </div>
-                    <button className="mt-6 w-full bg-emerald-600 text-white py-3 rounded-lg font-medium hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
-                      Manage Item
-                    </button>
-                  </div>
-                </div>
+                <ProductCard key={product.id} product={product} onManage={handleManage} />
               ))}
             </div>
           </section>
         )}
 
         {/* Enhanced Call to Action */}
-        <div className="text-center mt-16">
-          <p className="text-gray-300 mb-6 text-lg leading-relaxed max-w-2xl mx-auto">
+        <div className="text-center mt-20">
+          <p className="text-gray-300 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
             Transform your waste management with SafaiNova’s innovative automation solutions. Join us today to reduce environmental impact and enhance efficiency.
           </p>
+          {/* <Link href="/register"
+            className="inline-block bg-emerald-600 text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+          >
+          Join SafaiNova Now
+          </Link> */}
         </div>
       </main>
+
+      {/* Custom CSS for Animations (Inline or in globals.css) */}
+      <style jsx>{`
+        .animate-slideIn {
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .opacity-100 {
+          opacity: 1;
+        }
+        .translate-y-0 {
+          transform: translateY(0);
+        }
+      `}</style>
     </div>
   );
 };
