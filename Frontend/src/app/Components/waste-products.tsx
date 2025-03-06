@@ -1,6 +1,6 @@
 "use client"; // Keep this for App Router (Next.js 13+); remove if using Pages Router (Next.js 12 or earlier)
 import React, { useState } from "react";
-import Header from "../Header/"; // Adjusted path based on typical Next.js structure
+import Header from "../Header/Navbar"; // Adjusted path based on typical Next.js structure
 import Image from "next/image";
 
 // Sample data for Damaged and Expired Products (expanded with more items)
@@ -117,10 +117,10 @@ const WasteProductsPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-100 overflow-hidden">
       <Header />
       <main className="container mx-auto px-4 py-16">
-        <h1 className="text-5xl font-bold text-emerald-400 mb-12 text-center animate-fadeIn">
+        <h1 className="text-5xl font-bold text-emerald-400 mb-12 text-center">
           SafaiNova Waste Management Automation
         </h1>
-        <p className="text-gray-300 mb-12 text-center max-w-4xl mx-auto text-lg leading-relaxed animate-slideUp">
+        <p className="text-gray-300 mb-12 text-center max-w-4xl mx-auto text-lg leading-relaxed">
           Discover our cutting-edge waste management solutions for damaged and expired products, designed to optimize recycling, disposal, and sustainability for a cleaner future with SafaiNova.
         </p>
 
@@ -150,7 +150,7 @@ const WasteProductsPage = () => {
 
         {/* Damaged Products Section */}
         {activeSection === "damaged" && (
-          <section className="mb-16 animate-slideInLeft">
+          <section className="mb-16">
             <h2 className="text-3xl font-semibold text-emerald-400 mb-8">
               Damaged Products
             </h2>
@@ -194,7 +194,7 @@ const WasteProductsPage = () => {
 
         {/* Expired Products Section */}
         {activeSection === "expired" && (
-          <section className="animate-slideInRight">
+          <section>
             <h2 className="text-3xl font-semibold text-emerald-400 mb-8">
               Expired Products
             </h2>
@@ -241,12 +241,6 @@ const WasteProductsPage = () => {
           <p className="text-gray-300 mb-6 text-lg leading-relaxed max-w-2xl mx-auto">
             Transform your waste management with SafaiNova’s innovative automation solutions. Join us today to reduce environmental impact and enhance efficiency.
           </p>
-          <Link
-            href="/register"
-            className="inline-block bg-emerald-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
-          >
-            Join SafaiNova Now
-          </Link>
         </div>
       </main>
     </div>
