@@ -29,8 +29,8 @@
     ];
 
     const pieData = [
-        { name: "Active Users", value: 400 },
-        { name: "Inactive Users", value: 100 },
+        { name: "Recyclable Waste", value: 400 },
+        { name: "Non Recyclable Waste", value: 100 },
     ];
 
     const COLORS = ["#34D399", "#F87171"];
@@ -60,7 +60,7 @@
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             {/* Bar Chart */}
             <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-bold text-emerald-600 mb-4">Monthly User Growth</h2>
+            <h2 className="text-xl font-bold text-emerald-600 mb-4">Monthly Waste Managed</h2>
             <BarChart width={500} height={300} data={userData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
@@ -73,7 +73,7 @@
 
             {/* Pie Chart */}
             <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-bold text-emerald-600 mb-4">User Activity</h2>
+            <h2 className="text-xl font-bold text-emerald-600 mb-4">Waste Categories</h2>
             <PieChart width={400} height={300}>
                 <Pie
                 data={pieData}

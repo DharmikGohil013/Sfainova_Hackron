@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Home from "./Components";
+import Home from ".";
 import { isAuthenticated } from "./sign-in/auth";
 {/* <Route path="/waste-products" element={<WasteProductsPage />} /> */}
 

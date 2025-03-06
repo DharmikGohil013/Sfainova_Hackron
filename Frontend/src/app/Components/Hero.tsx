@@ -84,7 +84,7 @@ const   HeroSection: React.FC = () => {
             alt="hero banner"
             width={650}
             height={650}
-            className="object-cover"
+            className="object-cover w-[400px] h-[400px] rounded-full"
           />
         </div>
       </div>
