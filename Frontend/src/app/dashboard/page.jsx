@@ -65,10 +65,10 @@ const Dashboard = () => {
 
   // Team Members
   const teamData = [
-    { id: 1, name: "John Doe", email: "john@wastevision.com", role: "Collection Manager", status: "Active" },
-    { id: 2, name: "Jane Smith", email: "jane@wastevision.com", role: "Sorting Specialist", status: "Active" },
-    { id: 3, name: "Sam Wilson", email: "sam@wastevision.com", role: "AI Technician", status: "On Leave" },
-    { id: 4, name: "Maria Garcia", email: "maria@wastevision.com", role: "Route Optimizer", status: "Active" },
+    { id: 1, name: "shiva", email: "shiva@wastevision.com", role: "Collection Manager", status: "Active" },
+    { id: 2, name: "Sujal", email: "sujal@wastevision.com", role: "Sorting Specialist", status: "Active" },
+    { id: 3, name: "ihit joshi", email: "ihit@wastevision.com", role: "AI Technician", status: "On Leave" },
+    { id: 4, name: "krish", email: "krish@wastevision.com", role: "Route Optimizer", status: "Active" },
   ];
 
   // Colors for charts (matching WasteProductsPage.tsx and Recycle.tsx colors)
@@ -217,7 +217,7 @@ const Dashboard = () => {
 
           {/* Team Table */}
           <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-xl font-bold text-emerald-700 mb-4">Team Members</h2>
+            <h2 className="text-xl font-bold text-emerald-700 mb-4">Employees</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-left">
                 <thead className="border-b border-gray-300">
