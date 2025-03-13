@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  presets: ['@next/babel'],
-    images: {
-        domains: ['avatars.githubusercontent.com'], 
-      },
-}
+  reactStrictMode: true, // Optional but recommended
+  images: {
+    domains: ['safainova.githubusercontent.com'], 
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

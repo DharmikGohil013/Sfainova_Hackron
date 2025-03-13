@@ -1,11 +1,11 @@
-"use client"; // Keep this for App Router (Next.js 13+); remove if using Pages Router (Next.js 12 or earlier)
+"use client"; // Required for Next.js App Router (client-side component)
 import React, { useState, useEffect, useRef } from "react";
 import { FaTrashAlt, FaRecycle } from "react-icons/fa";
 import { MdLocationOn, MdDateRange } from "react-icons/md";
-import Header from "../Header/Navbar"; // Adjusted path based on typical Next.js structure
-import Link from "next/link"; // Added for the call-to-action link
+import Header from "../Header/Navbar"; // Adjust path based on your project structure
+import Link from "next/link";
 
-// Sample data for Damaged and Expired Products (7 items each)
+// Sample data for Damaged and Expired Products
 const damagedProducts = [
   {
     id: 1,
@@ -138,7 +138,7 @@ const expiredProducts = [
   },
 ];
 
-// Reusable Product Card Component
+// ProductCard Component
 const ProductCard = ({ product, onManage }) => {
   return (
     <div className="p-6 bg-white shadow-lg rounded-lg transition-transform transform hover:scale-105 duration-200">
@@ -176,11 +176,10 @@ const ProductCard = ({ product, onManage }) => {
   );
 };
 
-// Popup Component (Modal for Waste Management Info)
+// WasteManagementPopup Component
 const WasteManagementPopup = ({ isOpen, onClose, product }) => {
   const modalRef = useRef(null);
 
-  // Close modal when clicking outside or pressing Esc
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
@@ -205,7 +204,7 @@ const WasteManagementPopup = ({ isOpen, onClose, product }) => {
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !product) return null;
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
@@ -239,6 +238,7 @@ const WasteManagementPopup = ({ isOpen, onClose, product }) => {
   );
 };
 
+// Main WasteProductsPage Component
 const WasteProductsPage = () => {
   const [activeSection, setActiveSection] = useState("damaged"); // Default to Damaged Products
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -255,19 +255,6 @@ const WasteProductsPage = () => {
     setIsPopupOpen(false);
     setSelectedProduct(null);
   };
-
-  // Animation effect using useEffect for a smooth entrance (no external libraries)
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const elements = document.querySelectorAll(".animate-slideIn");
-      elements.forEach((el, index) => {
-        el.classList.add("opacity-100", "translate-y-0");
-        el.classList.remove("opacity-0", "translate-y-20");
-      });
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [activeSection]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -351,7 +338,7 @@ const WasteProductsPage = () => {
           </p>
           <Link
             href="/register"
-            className="block text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded transition-all duration-300"
+            className="inline-block text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded transition-all duration-300"
           >
             Join SafaiNova Now
           </Link>
@@ -365,32 +352,18 @@ const WasteProductsPage = () => {
         product={selectedProduct}
       />
 
-      {/* Custom CSS for Animations (Inline or in globals.css) */}
+      {/* Custom CSS for Animations */}
       <style jsx>{`
         .animate-slideIn {
           opacity: 0;
           transform: translateY(20px);
-          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+          animation: slideIn 0.8s ease-out forwards;
         }
-        .opacity-100 {
-          opacity: 1;
-        }
-        .translate-y-0 {
-          transform: translateY(0);
-        }
-        .animate-pulse {
-          animation: pulse 2s infinite;
-        }
-        .animate-bounce {
-          animation: bounce 2s infinite;
-        }
-        @keyframes pulse {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.1); }
-        }
-        @keyframes bounce {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
+        @keyframes slideIn {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
       `}</style>
     </div>
