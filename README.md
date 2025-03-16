@@ -1,4 +1,4 @@
-echo "# Waste Management Automation in Dark Stores
+"# Waste Management Automation in Dark Stores
 
 ## Team Members
 - Dharmik Gohil
