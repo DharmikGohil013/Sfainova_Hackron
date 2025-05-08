@@ -17,7 +17,6 @@ Waste Management Automation in Dark Stores
 
 ## Description
 We are using React and Next.js for a dynamic frontend, with Tailwind CSS and Bootstrap for a responsive design. Node.js ensures smooth backend interactions, creating a fast and user-friendly interface.
-
 For the backend, we are using the MERN stack with MongoDB for database management, Firebase for authentication and real-time updates, and REST API for seamless communication between the frontend and backend. This setup ensures scalability, security, and efficient data handling.
 " > README.md
 
